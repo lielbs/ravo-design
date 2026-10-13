@@ -1,0 +1,1 @@
+var e=(e,t)=>e.status===`paid`?`paid`:e.due<t?`late`:`due`,t=(t,n)=>{if(e(t,n)!==`late`)return 0;let r=e=>new Date(`${e}T12:00:00`).getTime();return Math.round((r(n)-r(t.due))/864e5)};export{t as n,e as t};

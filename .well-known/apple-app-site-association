@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["APPLE_TEAM_ID.app.ravoapp"],
+        "components": [
+          {
+            "/": "/",
+            "?": { "invite": "?*" },
+            "comment": "An invitation link opens the app instead of Safari."
+          }
+        ]
+      }
+    ]
+  }
+}
