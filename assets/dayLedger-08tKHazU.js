@@ -1,0 +1,1 @@
+import{sn as e}from"./ui-0Lr377_T.js";function t(t,n,r){let i=e=>!r||e.assigneeIds.some(e=>r.includes(e)),a=0,o=0;for(let r of t)i(r)&&(r.status===`open`?r.due<=n&&(a+=1):r.completedAt&&e(new Date(r.completedAt))===n&&(o+=1));let s=a+o;return{done:o,open:a,total:s,through:s?o/s:0}}export{t};
