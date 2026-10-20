@@ -55,7 +55,7 @@ export default function HouseBuilder({ initialLang }: { initialLang: Lang }) {
 
   return <div className="hb" dir={lang === 'he' ? 'rtl' : 'ltr'}>
     <div className="hb-stage">
-      <DaySky key={`${scene}-${look.shape}`} scene={scene} look={look} name={shownName} hour={hour} lit/>
+      <DaySky key={`${scene}-${look.shape}`} scene={scene} look={look} name={shownName} hour={hour} lit close/>
       <span className="hb-hint">{t.hint}</span>
     </div>
     <div className="hb-panel">
