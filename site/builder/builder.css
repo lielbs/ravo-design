@@ -7,7 +7,8 @@
   display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 22px; align-items: stretch;
 }
 .hb-stage {
-  position: relative; isolation: isolate; overflow: hidden; min-block-size: 300px;
+  /* The whole scene, framed as Today frames it — sky, hills, the house among them — not a close-up. */
+  position: sticky; inset-block-start: 100px; align-self: start; isolation: isolate; overflow: hidden; aspect-ratio: 9 / 5;
   border-radius: var(--r-xl, 28px); box-shadow: var(--e2, 0 12px 40px rgba(0,0,0,.18));
 }
 .hb-stage .day-sky { z-index: 0; inset: 0; block-size: 100%; animation: none; }
@@ -50,7 +51,7 @@
   .hb { display: block; }
   .hb-stage {
     position: sticky; inset-block-start: calc(env(safe-area-inset-top) + 84px); z-index: 3;
-    min-block-size: 0; aspect-ratio: 16 / 10; margin-block-end: 14px;
+    margin-block-end: 14px;
   }
   .hb-panel { padding: 16px; }
 }
