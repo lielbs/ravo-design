@@ -1,0 +1,52 @@
+/* The landing page's house builder. The sky itself is the app's own (src/styles/system/art.css); this
+   file only lays it out on the page and draws the choices, in the site's own tokens. */
+.hb {
+  --spring: linear(0, .2 4%, .6 12%, 1.04 26%, 1.01 38%, 1);
+  --spring-bounce: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 22px; align-items: stretch;
+}
+.hb-stage {
+  position: relative; isolation: isolate; overflow: hidden; min-block-size: 300px;
+  border-radius: var(--r-xl, 28px); box-shadow: var(--e2, 0 12px 40px rgba(0,0,0,.18));
+}
+.hb-stage .day-sky { z-index: 0; inset: 0; block-size: 100%; animation: none; }
+.hb-stage .day-sky__body { transition: transform 1200ms cubic-bezier(.3, .8, .3, 1); }
+.hb-hint {
+  position: absolute; inset-inline-start: 14px; inset-block-start: 14px; z-index: 1;
+  padding: 6px 12px; border-radius: 999px; background: rgba(255, 255, 255, .16); color: #FFF;
+  font-size: 13px; font-weight: 700; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.hb-panel {
+  display: grid; align-content: start; gap: 14px; padding: 20px;
+  border-radius: var(--r-xl, 28px); background: var(--surface, #FFF); box-shadow: var(--e2, 0 12px 40px rgba(0,0,0,.12));
+}
+.hb-row { display: grid; gap: 7px; margin: 0; }
+.hb-label { color: var(--ink-2, #5C5A52); font-size: 13px; font-weight: 700; }
+.hb-label:empty { display: none; }
+.hb-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.hb-chips button {
+  padding: 8px 14px; border: 1px solid var(--line, rgba(0,0,0,.12)); border-radius: 999px;
+  background: var(--surface-2, #F4F1EA); color: var(--ink, #1E1E1A); font: inherit; font-size: 14px; cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 160ms;
+}
+.hb-chips button:active { transform: scale(.94); }
+.hb-chips button.is-on { border-color: transparent; background: var(--action, #3B4529); color: var(--on-action, #FFF); font-weight: 700; }
+.hb-swatches { display: flex; flex-wrap: wrap; gap: 8px; }
+.hb-swatches button {
+  inline-size: 32px; block-size: 32px; border: 0; border-radius: 50%; cursor: pointer;
+  transition: transform 200ms var(--spring-bounce), box-shadow 160ms;
+}
+.hb-swatches button:active { transform: scale(.88); }
+.hb-swatches button.is-on { box-shadow: 0 0 0 2px var(--surface, #FFF), 0 0 0 4px var(--ink, #1E1E1A); transform: scale(1.08); }
+.hb-name input {
+  inline-size: 100%; padding: 10px 12px; border: 1px solid var(--line, rgba(0,0,0,.14)); border-radius: 12px;
+  background: var(--surface-2, #F4F1EA); color: var(--ink, #1E1E1A); font: inherit; font-size: 15px;
+}
+@media (max-width: 860px) {
+  .hb { grid-template-columns: 1fr; gap: 14px; }
+  /* On a phone the picture stays in view while the choices scroll under it, so every tap is seen. */
+  .hb-stage { position: sticky; inset-block-start: 76px; z-index: 2; min-block-size: 0; aspect-ratio: 16 / 10; }
+  .hb-panel { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .hb-stage .day-sky__body, .hb-chips button, .hb-swatches button { transition: none; } }
